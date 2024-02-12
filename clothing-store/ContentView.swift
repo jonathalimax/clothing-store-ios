@@ -1,10 +1,12 @@
+import Feed
 import SwiftUI
 import Theme
 
 struct ContentView: View {
-	let theme: Theme = .standard
+	let theme: Theme = .avocado
+
     var body: some View {
-		theme.product
+		FeedView(theme: theme)
     }
 }
 

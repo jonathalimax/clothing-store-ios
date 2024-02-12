@@ -38,13 +38,12 @@ let package = Package(
 			dependencies: ["Components"]
 		),
 		.target(
-			name: "Components"
+			name: "Components",
+			dependencies: ["Resources"]
 		),
 		.target(
 			name: "Resources",
-			resources: [
-				.process("Colors.xcassets")
-			]
+			resources: [.process("Assets")]
 		),
 		.target(
 			name: "Theme",

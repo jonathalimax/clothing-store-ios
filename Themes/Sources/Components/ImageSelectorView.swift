@@ -15,6 +15,7 @@ public struct ImageSelectorView: View {
 					content: {
 						$0.resizable()
 							.aspectRatio(contentMode: .fit)
+							.background(Color.clear)
 					},
 					placeholder: { ProgressView() }
 				)
@@ -24,4 +25,13 @@ public struct ImageSelectorView: View {
 		.tabViewStyle(.page)
 		.indexViewStyle(.page(backgroundDisplayMode: .always))
 	}
+}
+
+#Preview {
+	ImageSelectorView(
+		images: [
+			.init(string: "https://i.pinimg.com/originals/88/1f/61/881f615abd6b80ee5c33f13ad22eadbd.png")!,
+			.init(string: "https://i.pinimg.com/originals/88/1f/61/881f615abd6b80ee5c33f13ad22eadbd.png")!,
+		]
+	)
 }

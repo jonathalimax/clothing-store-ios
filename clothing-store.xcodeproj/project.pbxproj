@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		161750812B7952AE00898C8A /* Feed in Frameworks */ = {isa = PBXBuildFile; productRef = 161750802B7952AE00898C8A /* Feed */; };
+		161750832B79536C00898C8A /* Theme in Frameworks */ = {isa = PBXBuildFile; productRef = 161750822B79536C00898C8A /* Theme */; };
 		1662B3B12B65CA0D009BC318 /* ClothingStoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1662B3B02B65CA0D009BC318 /* ClothingStoreApp.swift */; };
 		1662B3B32B65CA0D009BC318 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1662B3B22B65CA0D009BC318 /* ContentView.swift */; };
 		1662B3B52B65CA0E009BC318 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1662B3B42B65CA0E009BC318 /* Assets.xcassets */; };
 		1662B3B92B65CA0E009BC318 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1662B3B82B65CA0E009BC318 /* Preview Assets.xcassets */; };
 		1662B3C82B66BD01009BC318 /* Themes in Resources */ = {isa = PBXBuildFile; fileRef = 1662B3C72B66BD01009BC318 /* Themes */; };
-		1662B3CA2B66BD1D009BC318 /* Theme in Frameworks */ = {isa = PBXBuildFile; productRef = 1662B3C92B66BD1D009BC318 /* Theme */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		1662B3B62B65CA0E009BC318 /* clothing_store.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = clothing_store.entitlements; sourceTree = "<group>"; };
 		1662B3B82B65CA0E009BC318 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1662B3C72B66BD01009BC318 /* Themes */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Themes; sourceTree = "<group>"; };
+		16947CD42B700B2F00D80EBB /* CSKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CSKit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,7 +32,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1662B3CA2B66BD1D009BC318 /* Theme in Frameworks */,
+				161750832B79536C00898C8A /* Theme in Frameworks */,
+				161750812B7952AE00898C8A /* Feed in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +43,7 @@
 		1662B3A42B65CA0D009BC318 = {
 			isa = PBXGroup;
 			children = (
+				16947CD42B700B2F00D80EBB /* CSKit */,
 				1662B3C72B66BD01009BC318 /* Themes */,
 				1662B3AF2B65CA0D009BC318 /* clothing-store */,
 				1662B3AE2B65CA0D009BC318 /* Products */,
@@ -99,7 +103,8 @@
 			);
 			name = "clothing-store";
 			packageProductDependencies = (
-				1662B3C92B66BD1D009BC318 /* Theme */,
+				161750802B7952AE00898C8A /* Feed */,
+				161750822B79536C00898C8A /* Theme */,
 			);
 			productName = "clothing-store";
 			productReference = 1662B3AD2B65CA0D009BC318 /* clothing-store.app */;
@@ -384,7 +389,11 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1662B3C92B66BD1D009BC318 /* Theme */ = {
+		161750802B7952AE00898C8A /* Feed */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Feed;
+		};
+		161750822B79536C00898C8A /* Theme */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Theme;
 		};

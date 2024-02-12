@@ -12,25 +12,27 @@ public struct ProductView: View {
 			VStack {
 				ImageSelectorView(
 					images: [
-						URL(string: "https://eu.billebeino.com/cdn/shop/products/BB-WHD27-CROSUNDANCECROPHOODIE.jpg?v=1693912450")!,
-						URL(string: "https://www.smartexapparel.com/hires/4150PLPINK_032822135651.png")!,
+						.init(string: "https://i.pinimg.com/originals/88/1f/61/881f615abd6b80ee5c33f13ad22eadbd.png")!,
+						.init(string: "https://i.pinimg.com/originals/88/1f/61/881f615abd6b80ee5c33f13ad22eadbd.png")!,
 					]
 				)
 
 				VStack(alignment: .leading, spacing: 6) {
 					HStack {
-						Group {
-							Text("Crop Hoodie")
+						Text("Crop Hoodie")
+							.font(.Raleway.fixed(.semibold, size: .t2))
+							.foregroundStyle(AppColors.charlestonGreen.colorValue)
 
-							Spacer()
+						Spacer()
 
-							Text("$9.99")
-						}
-						.font(.system(size: 14, weight: .bold))
+						Text("R$ 9,99")
+							.font(.Raleway.fixed(.bold, size: .t2))
+							.foregroundStyle(AppColors.charlestonGreen.colorValue)
 					}
 
 					Text("Zara")
-						.font(.system(size: 14, weight: .regular))
+						.font(.Raleway.fixed(.medium, size: .t3))
+						.foregroundStyle(.gray)
 				}
 			}
 			.padding()

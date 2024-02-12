@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "loja-de-roupas-femininas-online-removebg-preview.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "compression-type" : "automatic"
+  }
+}

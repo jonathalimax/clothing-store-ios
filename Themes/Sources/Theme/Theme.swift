@@ -8,7 +8,7 @@ public enum Theme {
 }
 
 extension Theme {
-	public var product: some View {
+	public var productView: some View {
 		let view: any View
 
 		switch self {
