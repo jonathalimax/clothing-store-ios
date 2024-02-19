@@ -11,22 +11,33 @@ let package = Package(
 			name: "Feed",
 			targets: ["Feed"]
 		),
+		.library(
+			name: "Main",
+			targets: ["Main"]
+		),
 	],
 	dependencies: [
 		.package(path: "../Themes"),
+		.package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.8.0")
 	],
 	targets: [
 		.target(
-			name: "Feed",
+			name: "Main",
 			dependencies: [
-				.product(name: "Resources", package: "Themes"),
 				.product(name: "Components", package: "Themes"),
-				.product(name: "Theme", package: "Themes")
+				.product(name: "Resources", package: "Themes"),
+				.product(name: "Theme", package: "Themes"),
+				.byName(name: "Feed"),
 			]
 		),
-		.testTarget(
-			name: "FedeTests",
-			dependencies: ["Feed"]
-		),
+		.target(
+			name: "Feed",
+			dependencies: [
+				.product(name: "Components", package: "Themes"),
+				.product(name: "Resources", package: "Themes"),
+				.product(name: "Theme", package: "Themes"),
+				.product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+			]
+		)
 	]
 )

@@ -13,7 +13,7 @@ public struct CSButton: View {
 	public var body: some View {
 		Button(action: {}) {
 			Text(title)
-				.font(.AveriaSerifLibre.fixed(.regular, size: .t2))
+				.font(.AveriaSerifLibre.fixed(.regular, size: .t1))
 				.foregroundStyle(style.foregroundColor)
 				.padding()
 				.frame(maxWidth: .infinity)
@@ -36,7 +36,7 @@ extension CSButton {
 
 		var backgroundColor: Color {
 			switch self {
-			case .dark: return .white
+			case .dark: return AppColors.antiflashWhite.colorValue
 			case .light: return .black
 			}
 		}

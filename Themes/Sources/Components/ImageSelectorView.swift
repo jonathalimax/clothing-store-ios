@@ -31,7 +31,7 @@ public struct ImageSelectorView: View {
 	ImageSelectorView(
 		images: [
 			.init(string: "https://i.pinimg.com/originals/88/1f/61/881f615abd6b80ee5c33f13ad22eadbd.png")!,
-			.init(string: "https://i.pinimg.com/originals/88/1f/61/881f615abd6b80ee5c33f13ad22eadbd.png")!,
+			.init(string: "https://i.ibb.co/jL7t3QG/loja-de-roupas-femininas-online-removebg-preview.png")!,
 		]
 	)
 }

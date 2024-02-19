@@ -11,7 +11,7 @@ public struct SearchBarView: View {
 	public var body: some View {
 		Button(action: { onTap() }) {
 			ZStack(alignment: .leading) {
-				Color.white
+				AppColors.lotion.colorValue
 
 				HStack(spacing: 8) {
 					Image(.magnifyingGlass)

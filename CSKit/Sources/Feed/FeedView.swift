@@ -11,66 +11,67 @@ public struct FeedView: View {
 	}
 
 	public var body: some View {
-		ZStack(alignment: .top) {
-			AppColors.antiflashWhite.colorValue
-				.ignoresSafeArea()
+		NavigationStack {
+			ZStack(alignment: .top) {
+				AppColors.antiflashWhite.colorValue
+					.ignoresSafeArea()
 
-			ScrollView() {
-				VStack(spacing: 22) {
-					headerView
-						.padding(.horizontal)
+				ScrollView() {
+					VStack(spacing: 16) {
+						headerView
+							.padding([.top, .horizontal])
 
-					SearchBarView {}
-						.padding(.horizontal)
+						BannerView(imageURL: "https://i.ibb.co/bXxtkfy/Subject-2.png")
+							.padding(.top)
 
-					BannerView(imageURL: "https://i.ibb.co/bXxtkfy/Subject-2.png")
-						.padding(.top)
-
-					productsView
-						.padding(.horizontal)
+						productsView
+							.padding(.horizontal)
+					}
+					.frame(maxWidth: .infinity, alignment: .leading)
+					.padding(.bottom)
 				}
-				.frame(maxWidth: .infinity, alignment: .leading)
-				.padding(.vertical)
 			}
+			.navigationTitle("Olá, Paloma!")
+			.toolbarTitleDisplayMode(.large)
+			.toolbarBackground(AppColors.antiflashWhite.colorValue.opacity(0.1), for: .navigationBar)
 		}
 	}
 
 	private var headerView: some View {
-		HStack {
-			VStack(alignment: .leading, spacing: 6) {
-				Text("Oi Paloma")
-					.font(.Raleway.fixed(.semibold, size: .t1))
+		HStack(spacing: 16) {
+			SearchBarView {}
 
-				Text("Qual será o look de hoje?")
-					.font(.Raleway.fixed(.bold, size: .h5))
-			}
+			cartView
+		}
+	}
 
-			Spacer()
-
+	private var cartView: some View {
+		Button(action: {}) {
 			ZStack {
-				Color.white.opacity(0.6)
+				AppColors.lotion.colorValue
 
-				Image(.shoppingBag)
-					.resizable()
-					.padding()
+				VStack(spacing: 16) {
+					Image(.shoppingBag)
+						.resizable()
+						.padding()
+				}
 			}
 			.frame(width: 60, height: 60)
 			.clipShape(Circle())
 		}
-		.padding(.horizontal)
 	}
 
 	private var productsView: some View {
 		let columns: [GridItem] = Array(
-			repeating: .init(.flexible(), spacing: 16),
+			repeating: .init(.flexible(), spacing: 12),
 			count: 2
 		)
 
-		return VStack(alignment: .leading, spacing: 22) {
+		return VStack(alignment: .leading, spacing: 12) {
 			Text("Produtos")
 				.font(.Raleway.fixed(.bold, size: .h5))
 
-			LazyVGrid(columns: columns, spacing: 16) {
+			LazyVGrid(columns: columns, spacing: 12) {
 				ForEach(0...9, id: \.self) { _ in
 					theme.productView
 						.frame(height: 260)

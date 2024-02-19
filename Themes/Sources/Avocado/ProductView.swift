@@ -7,13 +7,13 @@ public struct ProductView: View {
 
 	public var body: some View {
 		ZStack {
-			Color.white
+			AppColors.lotion.colorValue
 
 			VStack {
 				ImageSelectorView(
 					images: [
 						.init(string: "https://i.pinimg.com/originals/88/1f/61/881f615abd6b80ee5c33f13ad22eadbd.png")!,
-						.init(string: "https://i.pinimg.com/originals/88/1f/61/881f615abd6b80ee5c33f13ad22eadbd.png")!,
+						.init(string: "https://i.ibb.co/jL7t3QG/loja-de-roupas-femininas-online-removebg-preview.png")!,
 					]
 				)
 
@@ -34,10 +34,11 @@ public struct ProductView: View {
 						.font(.Raleway.fixed(.medium, size: .t3))
 						.foregroundStyle(.gray)
 				}
+				.padding(.horizontal)
 			}
-			.padding()
+			.padding(.vertical)
 		}
-		.clipShape(.rect(cornerRadius: 20))
+		.clipShape(.rect(cornerRadius: 28))
 		.shadow(color: Color.black.opacity(0.05), radius: 20, x: 0, y: 10)
 	}
 }

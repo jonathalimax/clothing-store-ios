@@ -4,6 +4,7 @@ public enum LocalImage: String {
 	case magnifyingGlass
 	case shoppingBag
 	case pinkLook
+	case trending
 }
 
 public extension Image {
