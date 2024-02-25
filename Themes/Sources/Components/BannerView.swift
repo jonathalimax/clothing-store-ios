@@ -21,24 +21,23 @@ public struct BannerView: View {
 
 	private var contentView: some View {
 		ZStack {
-			AppColors.charlestonGreen.colorValue
+			AppColors.darkBackground.colorValue
 
 			HStack(alignment: .top, spacing: 8) {
 				VStack(alignment: .leading, spacing: 6) {
 					Text("Último desconto")
 						.font(.Raleway.fixed(.semibold, size: .h4))
-						.foregroundStyle(.white)
+						.foregroundStyle(AppColors.white.colorValue)
 
 					Text("até 70%")
 						.font(.Raleway.fixed(.bold, size: .h5))
 						.foregroundStyle(AppColors.boogerBuster.colorValue)
 
 					Text("Compre agora e ganhe frete grátis!")
-						.lineLimit(nil)
 						.font(.Raleway.fixed(.medium, size: .t2))
-						.foregroundStyle(.white)
-						.padding(.top, 4)
+						.foregroundStyle(AppColors.white.colorValue)
 				}
+				.padding(.top, 4)
 
 				Spacer()
 

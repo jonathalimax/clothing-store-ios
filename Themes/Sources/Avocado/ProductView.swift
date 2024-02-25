@@ -18,23 +18,20 @@ public struct ProductView: View {
 				)
 
 				VStack(alignment: .leading, spacing: 6) {
-					HStack {
+					Group {
 						Text("Crop Hoodie")
 							.font(.Raleway.fixed(.semibold, size: .t2))
 							.foregroundStyle(AppColors.charlestonGreen.colorValue)
 
-						Spacer()
 
 						Text("R$ 9,99")
 							.font(.Raleway.fixed(.bold, size: .t2))
 							.foregroundStyle(AppColors.charlestonGreen.colorValue)
 					}
-
-					Text("Zara")
-						.font(.Raleway.fixed(.medium, size: .t3))
-						.foregroundStyle(.gray)
+					.frame(maxWidth: .infinity, alignment: .leading)
 				}
 				.padding(.horizontal)
+				.padding(.bottom, 6)
 			}
 			.padding(.vertical)
 		}

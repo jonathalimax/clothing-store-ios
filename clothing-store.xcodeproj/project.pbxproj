@@ -7,24 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1601F01C2B8ABCC300976281 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1601F01B2B8ABCC300976281 /* LaunchScreen.storyboard */; };
 		161750832B79536C00898C8A /* Theme in Frameworks */ = {isa = PBXBuildFile; productRef = 161750822B79536C00898C8A /* Theme */; };
 		1662B3B12B65CA0D009BC318 /* ClothingStoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1662B3B02B65CA0D009BC318 /* ClothingStoreApp.swift */; };
-		1662B3B32B65CA0D009BC318 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1662B3B22B65CA0D009BC318 /* ContentView.swift */; };
 		1662B3B52B65CA0E009BC318 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1662B3B42B65CA0E009BC318 /* Assets.xcassets */; };
 		1662B3B92B65CA0E009BC318 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1662B3B82B65CA0E009BC318 /* Preview Assets.xcassets */; };
 		1662B3C82B66BD01009BC318 /* Themes in Resources */ = {isa = PBXBuildFile; fileRef = 1662B3C72B66BD01009BC318 /* Themes */; };
+		1689D26A2B8618B800129AF9 /* iOSKit in Resources */ = {isa = PBXBuildFile; fileRef = 1689D2692B8618B800129AF9 /* iOSKit */; };
 		16D31B362B8276DC005D0C28 /* Main in Frameworks */ = {isa = PBXBuildFile; productRef = 16D31B352B8276DC005D0C28 /* Main */; };
+		16D5E0552B869189004EB329 /* Authentication in Frameworks */ = {isa = PBXBuildFile; productRef = 16D5E0542B869189004EB329 /* Authentication */; };
+		16D5E0572B86C6B1004EB329 /* Services in Frameworks */ = {isa = PBXBuildFile; productRef = 16D5E0562B86C6B1004EB329 /* Services */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1601F01B2B8ABCC300976281 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1662B3AD2B65CA0D009BC318 /* clothing-store.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "clothing-store.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1662B3B02B65CA0D009BC318 /* ClothingStoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingStoreApp.swift; sourceTree = "<group>"; };
-		1662B3B22B65CA0D009BC318 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1662B3B42B65CA0E009BC318 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1662B3B62B65CA0E009BC318 /* clothing_store.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = clothing_store.entitlements; sourceTree = "<group>"; };
 		1662B3B82B65CA0E009BC318 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1662B3C72B66BD01009BC318 /* Themes */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Themes; sourceTree = "<group>"; };
-		16947CD42B700B2F00D80EBB /* CSKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CSKit; sourceTree = "<group>"; };
+		1689D2692B8618B800129AF9 /* iOSKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = iOSKit; sourceTree = "<group>"; };
 		16D31B372B82D05F005D0C28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -33,8 +36,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16D5E0572B86C6B1004EB329 /* Services in Frameworks */,
 				161750832B79536C00898C8A /* Theme in Frameworks */,
 				16D31B362B8276DC005D0C28 /* Main in Frameworks */,
+				16D5E0552B869189004EB329 /* Authentication in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,7 +49,7 @@
 		1662B3A42B65CA0D009BC318 = {
 			isa = PBXGroup;
 			children = (
-				16947CD42B700B2F00D80EBB /* CSKit */,
+				1689D2692B8618B800129AF9 /* iOSKit */,
 				1662B3C72B66BD01009BC318 /* Themes */,
 				1662B3AF2B65CA0D009BC318 /* clothing-store */,
 				1662B3AE2B65CA0D009BC318 /* Products */,
@@ -65,10 +70,10 @@
 			children = (
 				16D31B372B82D05F005D0C28 /* Info.plist */,
 				1662B3B02B65CA0D009BC318 /* ClothingStoreApp.swift */,
-				1662B3B22B65CA0D009BC318 /* ContentView.swift */,
 				1662B3B42B65CA0E009BC318 /* Assets.xcassets */,
 				1662B3B62B65CA0E009BC318 /* clothing_store.entitlements */,
 				1662B3B72B65CA0E009BC318 /* Preview Content */,
+				1601F01B2B8ABCC300976281 /* LaunchScreen.storyboard */,
 			);
 			path = "clothing-store";
 			sourceTree = "<group>";
@@ -107,6 +112,8 @@
 			packageProductDependencies = (
 				161750822B79536C00898C8A /* Theme */,
 				16D31B352B8276DC005D0C28 /* Main */,
+				16D5E0542B869189004EB329 /* Authentication */,
+				16D5E0562B86C6B1004EB329 /* Services */,
 			);
 			productName = "clothing-store";
 			productReference = 1662B3AD2B65CA0D009BC318 /* clothing-store.app */;
@@ -151,7 +158,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1662B3C82B66BD01009BC318 /* Themes in Resources */,
+				1689D26A2B8618B800129AF9 /* iOSKit in Resources */,
 				1662B3B92B65CA0E009BC318 /* Preview Assets.xcassets in Resources */,
+				1601F01C2B8ABCC300976281 /* LaunchScreen.storyboard in Resources */,
 				1662B3B52B65CA0E009BC318 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -163,7 +172,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1662B3B32B65CA0D009BC318 /* ContentView.swift in Sources */,
 				1662B3B12B65CA0D009BC318 /* ClothingStoreApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,32 +305,39 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "clothing-store/clothing_store.entitlements";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"clothing-store/Preview Content\"";
-				DEVELOPMENT_TEAM = P9CBST4MZZ;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = F4P53579F9;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "clothing-store/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Clothing Store";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jlima.clothing-store";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.boardclass.boardclass.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Boardclass Development";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -338,32 +353,39 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "clothing-store/clothing_store.entitlements";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"clothing-store/Preview Content\"";
-				DEVELOPMENT_TEAM = P9CBST4MZZ;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = F4P53579F9;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "clothing-store/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Clothing Store";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jlima.clothing-store";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.boardclass.boardclass.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Boardclass Development";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -404,6 +426,14 @@
 		16D31B352B8276DC005D0C28 /* Main */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Main;
+		};
+		16D5E0542B869189004EB329 /* Authentication */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Authentication;
+		};
+		16D5E0562B86C6B1004EB329 /* Services */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Services;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

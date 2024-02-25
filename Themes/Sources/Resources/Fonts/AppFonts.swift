@@ -19,6 +19,8 @@ public enum AppFonts {
 
 extension AppFonts {
 	public enum Size: CGFloat {
+		/// 36 px
+		case h0 = 36
 		/// 32 px
 		case h1 = 32
 		/// 28 px

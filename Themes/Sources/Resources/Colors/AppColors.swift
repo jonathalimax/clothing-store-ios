@@ -6,6 +6,8 @@ public enum AppColors: String {
 	case boogerBuster
 	case charlestonGreen
 	case lotion
+	case darkBackground
+	case white
 
 	public var colorValue: Color {
 		.init(rawValue, bundle: .module)

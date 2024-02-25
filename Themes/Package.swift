@@ -28,6 +28,9 @@ let package = Package(
 			targets: ["Theme"]
 		),
 	],
+	dependencies: [
+		.package(url: "https://github.com/airbnb/lottie-ios", from: "4.4.1")
+	],
 	targets: [
 		.target(
 			name: "Avocado",
@@ -39,11 +42,19 @@ let package = Package(
 		),
 		.target(
 			name: "Components",
-			dependencies: ["Resources"]
+			dependencies: [
+				"Resources",
+				.product(name: "Lottie", package: "lottie-ios")
+			]
 		),
 		.target(
 			name: "Resources",
-			resources: [.process("Assets")]
+			resources: [
+				.process("Animation/Assets"),
+				.process("Colors/Assets"),
+				.process("Fonts/Assets"),
+				.process("Images/Assets"),
+			]
 		),
 		.target(
 			name: "Theme",
