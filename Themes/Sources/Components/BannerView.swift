@@ -14,7 +14,7 @@ public struct BannerView: View {
 
 			contentView
 		}
-		.shadow(color: Color.black.opacity(0.5), radius: 20, x: 0, y: 10)
+		.shadow(color: Color.black.opacity(0.5), radius: 26, x: 0, y: 20)
 		.tabViewStyle(.page(indexDisplayMode: .always))
 		.frame(height: 220)
 	}
@@ -63,10 +63,19 @@ public struct BannerView: View {
 	}
 }
 
-#Preview {
+#Preview("Light") {
 	ZStack {
 		AppColors.antiflashWhite.colorValue.ignoresSafeArea()
 
 		BannerView(imageURL: "https://i.ibb.co/bXxtkfy/Subject-2.png")
 	}
+}
+
+#Preview("Dark") {
+	ZStack {
+		AppColors.darkBackground.colorValue.ignoresSafeArea()
+
+		BannerView(imageURL: "https://i.ibb.co/bXxtkfy/Subject-2.png")
+	}
+	.preferredColorScheme(.dark)
 }

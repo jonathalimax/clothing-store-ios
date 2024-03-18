@@ -10,18 +10,19 @@ public struct ProfileView: View {
 	}
 
 	public var body: some View {
-		ZStack {
-			AppColors.charlestonGreen.colorValue
-			
-			Button(action: { store.send(.logoutTapped) }) {
-				Text("Logout")
+		NavigationStack {
+			ZStack {
+				AppColors.antiflashWhite.colorValue
 			}
-
-			if store.changeColor {
-				Text("Changed")
+			.ignoresSafeArea()
+			.toolbar {
+				ToolbarItem(placement: .topBarTrailing) {
+					Button(action: { store.send(.logoutTapped) }) {
+						Text("Logout")
+					}
+				}
 			}
 		}
-		.ignoresSafeArea()
 	}
 }
 

@@ -9,27 +9,27 @@ public struct SearchBarView: View {
 	}
 
 	public var body: some View {
-		Button(action: { onTap() }) {
-			ZStack(alignment: .leading) {
-				AppColors.lotion.colorValue
+		ZStack(alignment: .leading) {
+			Color.clear
 
-				HStack(spacing: 8) {
-					Image(.magnifyingGlass)
-						.resizable()
-						.renderingMode(.template)
-						.foregroundStyle(.gray)
-						.frame(width: 18, height: 18)
+			HStack(spacing: 8) {
+				Image(.magnifyingGlass)
+					.resizable()
+					.renderingMode(.template)
+					.foregroundStyle(.gray)
+					.frame(width: 18, height: 18)
 
-					Text("Buscar produto")
-						.font(.Raleway.fixed(.semibold, size: .t1))
-						.foregroundStyle(.gray)
-				}
-				.padding(.horizontal, 20)
+				Text("Buscar produto")
+					.font(.Raleway.fixed(.semibold, size: .t1))
+					.foregroundStyle(.gray)
 			}
-			.frame(height: 60)
-			.clipShape(.rect(cornerRadius: 30))
+			.padding(.horizontal, 20)
 		}
+		.frame(height: 60)
+		.background(.ultraThickMaterial)
+		.clipShape(.rect(cornerRadius: 26))
 		.shadow(color: Color.black.opacity(0.05), radius: 20, x: 0, y: 10)
+		.onTapGesture { onTap() }
 	}
 }
 

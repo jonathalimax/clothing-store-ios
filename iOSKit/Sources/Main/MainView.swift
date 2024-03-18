@@ -35,7 +35,7 @@ public struct MainView: View {
 
 	private var loadingView: some View {
 		ZStack {
-			AppColors.charlestonGreen.colorValue
+			AppColors.antiflashWhite.colorValue
 
 			AnimationView(.loading)
 				.frame(width: 100, height: 100)
@@ -57,13 +57,20 @@ public struct MainView: View {
 					}
 			}
 			.toolbarBackground(.visible, for: .tabBar)
-			.toolbarBackground(AppColors.antiflashWhite.colorValue.opacity(0.1), for: .tabBar)
+			.toolbarBackground(.clear, for: .tabBar)
 		}
 	}
 }
 
-#Preview {
+#Preview("Light") {
 	MainView(store: .init(initialState: .init()) {
 		MainReducer()
 	})
+}
+
+#Preview("Dark") {
+	MainView(store: .init(initialState: .init()) {
+		MainReducer()
+	})
+	.preferredColorScheme(.dark)
 }

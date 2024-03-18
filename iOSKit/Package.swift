@@ -20,6 +20,10 @@ let package = Package(
 			targets: ["Main"]
 		),
 		.library(
+			name: "Network",
+			targets: ["Network"]
+		),
+		.library(
 			name: "Profile",
 			targets: ["Profile"]
 		),
@@ -27,11 +31,15 @@ let package = Package(
 			name: "Services",
 			targets: ["Services"]
 		),
+		.library(
+			name: "Tools",
+			targets: ["Tools"]
+		),
 	],
 	dependencies: [
 		.package(path: "../Themes"),
-		.package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.2.1"),
-		.package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.8.0")
+		.package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.2.2"),
+		.package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.9.2")
 	],
 	targets: [
 		.target(
@@ -47,6 +55,8 @@ let package = Package(
 		.target(
 			name: "Feed",
 			dependencies: [
+				"Network",
+				"Tools",
 				.product(name: "Components", package: "Themes"),
 				.product(name: "Resources", package: "Themes"),
 				.product(name: "Theme", package: "Themes"),
@@ -65,6 +75,13 @@ let package = Package(
 			]
 		),
 		.target(
+			name: "Network",
+			dependencies: [
+				"Tools",
+				.product(name: "Dependencies", package: "swift-dependencies")
+			]
+		),
+		.target(
 			name: "Profile",
 			dependencies: [
 				.byName(name: "Authentication"),
@@ -75,7 +92,14 @@ let package = Package(
 		.target(
 			name: "Services",
 			dependencies: [
+				"Network",
 				.product(name: "Dependencies", package: "swift-dependencies")
+			]
+		),
+		.target(
+			name: "Tools",
+			dependencies: [
+				.product(name: "Resources", package: "Themes"),
 			]
 		),
 	]

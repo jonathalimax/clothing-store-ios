@@ -9,10 +9,10 @@ public struct ProductView: View {
 		ZStack {
 			AppColors.lotion.colorValue
 
-			VStack {
+			VStack(spacing: .zero) {
 				ImageSelectorView(
 					images: [
-						.init(string: "https://i.pinimg.com/originals/88/1f/61/881f615abd6b80ee5c33f13ad22eadbd.png")!,
+						.init(string: "https://lojamorenarosa.vtexassets.com/arquivos/ids/310756-1200-auto")!,
 						.init(string: "https://i.ibb.co/jL7t3QG/loja-de-roupas-femininas-online-removebg-preview.png")!,
 					]
 				)
@@ -30,27 +30,44 @@ public struct ProductView: View {
 					}
 					.frame(maxWidth: .infinity, alignment: .leading)
 				}
-				.padding(.horizontal)
-				.padding(.bottom, 6)
+				.padding()
+				.background(AppColors.lotion.colorValue)
 			}
-			.padding(.vertical)
 		}
-		.clipShape(.rect(cornerRadius: 28))
+		.clipShape(.rect(cornerRadius: 18))
 		.shadow(color: Color.black.opacity(0.05), radius: 20, x: 0, y: 10)
 	}
 }
 
-#Preview() {
+#Preview("LightMode") {
 	ZStack {
 		AppColors.antiflashWhite.colorValue
 			.ignoresSafeArea()
 
 		HStack {
 			ProductView()
-				.frame(width: 200, height: 260)
+				.frame(height: 290)
 
 			ProductView()
-				.frame(width: 200, height: 260)
+				.frame(height: 290)
 		}
+		.padding()
 	}
+}
+
+#Preview("DarkMode") {
+	ZStack {
+		AppColors.antiflashWhite.colorValue
+			.ignoresSafeArea()
+
+		HStack {
+			ProductView()
+				.frame(height: 290)
+
+			ProductView()
+				.frame(height: 290)
+		}
+		.padding()
+	}
+	.preferredColorScheme(.dark)
 }

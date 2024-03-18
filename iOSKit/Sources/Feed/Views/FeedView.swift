@@ -32,6 +32,7 @@ public struct FeedView: View {
 					.padding(.bottom)
 				}
 			}
+			.onAppear { store.send(.viewAppeared) }
 			.navigationTitle("Olá, Paloma!")
 			.toolbarBackground(.clear, for: .navigationBar)
 			.navigationDestination(
@@ -45,7 +46,7 @@ public struct FeedView: View {
 	}
 
 	private var headerView: some View {
-		HStack(spacing: 16) {
+		HStack(spacing: 12) {
 			SearchBarView {}
 
 			cartView
@@ -54,31 +55,28 @@ public struct FeedView: View {
 
 	private var cartView: some View {
 		Button(action: {}) {
-			ZStack {
-				AppColors.lotion.colorValue
-
-				VStack(spacing: 16) {
-					Image(.shoppingBag)
-						.resizable()
-						.padding()
-				}
-			}
-			.frame(width: 60, height: 60)
-			.clipShape(Circle())
+			Image(.shoppingBag)
+				.resizable()
+				.aspectRatio(contentMode: .fit)
+				.colorMultiply(.white)
+				.padding()
+				.frame(width: 68, height: 60)
+				.background(.ultraThickMaterial)
+				.clipShape(.rect(cornerRadius: 26))
 		}
 	}
 
 	private var productsView: some View {
 		let columns: [GridItem] = Array(
-			repeating: .init(.flexible(), spacing: 12),
+			repeating: .init(.flexible(), spacing: 20),
 			count: 2
 		)
 
-		return VStack(alignment: .leading, spacing: 12) {
+		return VStack(alignment: .leading, spacing: 22) {
 			Text("Produtos")
-				.font(.Raleway.fixed(.bold, size: .h5))
+				.font(.Raleway.fixed(.bold, size: .h3))
 
-			LazyVGrid(columns: columns, spacing: 12) {
+			LazyVGrid(columns: columns, spacing: 22) {
 				ForEach(0...9, id: \.self) { _ in
 					store.theme.productView
 						.onTapGesture { store.send(.productTapped) }
@@ -90,8 +88,15 @@ public struct FeedView: View {
 	}
 }
 
-#Preview {
+#Preview("Light") {
 	FeedView(store: .init(initialState: .init(theme: .avocado)) {
 		FeedReducer()
 	})
+}
+
+#Preview("Dark") {
+	FeedView(store: .init(initialState: .init(theme: .avocado)) {
+		FeedReducer()
+	})
+	.preferredColorScheme(.dark)
 }

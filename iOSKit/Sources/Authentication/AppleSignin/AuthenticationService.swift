@@ -91,7 +91,7 @@ extension AuthService: ASAuthorizationControllerDelegate {
 	}
 }
 
-// MARK: - Dependecy Registration
+// MARK: - Dependency Registration
 extension AuthService: DependencyKey {
 	public static let liveValue: AuthService = .init()
 	public static let testValue: AuthService = .init(appleIDProvider: AppleIDProviderMock())
