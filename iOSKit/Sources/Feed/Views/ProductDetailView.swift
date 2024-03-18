@@ -137,6 +137,7 @@ struct ProductDetailView: View {
 			Button(action: { store.send(.cartButtonTapped) }) {
 				Image(systemName: "cart.fill")
 			}
+			.frame(width: 60)
 			.buttonStyle(CSButtonStyle(.dark))
 			.sensoryFeedback(.increase, trigger: store.cartTappedAmount) // TODO: Test haptic
 
@@ -145,7 +146,6 @@ struct ProductDetailView: View {
 			}
 			.buttonStyle(CSButtonStyle(.light))
 		}
-		.frame(width: 60)
 	}
 
 	private var galleryView: some View {

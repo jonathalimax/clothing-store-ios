@@ -19,6 +19,18 @@ extension FeedService: DependencyKey {
 		@Dependency(\.network) var network
 		return .live(network: network)
 	}()
+
+	public static var testValue: FeedService {
+		.init(
+			fetch: { .mock }
+		)
+	}
+
+	public static var previewValue: FeedService {
+		.init(
+			fetch: { .mock }
+		)
+	}
 }
 
 extension DependencyValues {

@@ -3,28 +3,27 @@ import Resources
 import Components
 
 public struct ProductView: View {
-	public init() {}
+	private var data: ProductView.Data
+
+	public init(data: ProductView.Data) {
+		self.data = data
+	}
 
 	public var body: some View {
 		ZStack {
-			AppColors.lotion.colorValue
+//			AppColors.lotion.colorValue
 
 			VStack(spacing: .zero) {
-				ImageSelectorView(
-					images: [
-						.init(string: "https://lojamorenarosa.vtexassets.com/arquivos/ids/310756-1200-auto")!,
-						.init(string: "https://i.ibb.co/jL7t3QG/loja-de-roupas-femininas-online-removebg-preview.png")!,
-					]
-				)
+				ImageSelectorView(images: data.images)
 
 				VStack(alignment: .leading, spacing: 6) {
 					Group {
-						Text("Crop Hoodie")
+						Text(data.name)
 							.font(.Raleway.fixed(.semibold, size: .t2))
 							.foregroundStyle(AppColors.charlestonGreen.colorValue)
 
 
-						Text("R$ 9,99")
+						Text(data.price)
 							.font(.Raleway.fixed(.bold, size: .t2))
 							.foregroundStyle(AppColors.charlestonGreen.colorValue)
 					}
@@ -33,10 +32,37 @@ public struct ProductView: View {
 				.padding()
 				.background(AppColors.lotion.colorValue)
 			}
+			.background(.ultraThinMaterial)
 		}
 		.clipShape(.rect(cornerRadius: 18))
 		.shadow(color: Color.black.opacity(0.05), radius: 20, x: 0, y: 10)
 	}
+}
+
+extension ProductView {
+	public struct Data {
+		let name: String
+		let price: String
+		let images: [URL]
+
+		public init(name: String, price: String, images: [URL]) {
+			self.name = name
+			self.price = price
+			self.images = images
+		}
+	}
+}
+
+#if DEBUG
+private extension ProductView.Data {
+	static let mock: Self = .init(
+		name: "Kimono Granada",
+		price: "R$ 9,99",
+		images: [
+			.init(string: "https://i.postimg.cc/ncVbfwmj/Copy-of-CLAREAMOR-50-batcheditor-fotor.jpg")!,
+			.init(string: "https://i.postimg.cc/W42zxPVD/Copy-of-CLAREAMOR-65-batcheditor-fotor.jpg")!
+		]
+	)
 }
 
 #Preview("LightMode") {
@@ -45,10 +71,10 @@ public struct ProductView: View {
 			.ignoresSafeArea()
 
 		HStack {
-			ProductView()
+			ProductView(data: .mock)
 				.frame(height: 290)
 
-			ProductView()
+			ProductView(data: .mock)
 				.frame(height: 290)
 		}
 		.padding()
@@ -61,13 +87,14 @@ public struct ProductView: View {
 			.ignoresSafeArea()
 
 		HStack {
-			ProductView()
+			ProductView(data: .mock)
 				.frame(height: 290)
 
-			ProductView()
+			ProductView(data: .mock)
 				.frame(height: 290)
 		}
 		.padding()
 	}
 	.preferredColorScheme(.dark)
 }
+#endif

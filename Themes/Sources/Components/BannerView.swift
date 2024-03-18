@@ -2,80 +2,140 @@ import Resources
 import SwiftUI
 
 public struct BannerView: View {
-	public var imageURL: String
+	public var banners: [BannerView.Data]
 
-	public init(imageURL: String) {
-		self.imageURL = imageURL
+	public init(banners: [BannerView.Data]) {
+		self.banners = banners
 	}
 
 	public var body: some View {
-		TabView {
-			contentView
-
-			contentView
+		GeometryReader { geo in
+			ScrollView(.horizontal, showsIndicators: false) {
+				LazyHStack {
+					ForEach(banners, id: \.id) {
+						if banners.count == 1 {
+							contentView(banner: $0)
+								.containerRelativeFrame(.horizontal)
+						} else {
+							contentView(banner: $0)
+								.frame(width: geo.size.width - 32)
+						}
+					}
+				}
+			}
+			.scrollTargetBehavior(.paging)
+			.scrollDisabled(banners.count == 1)
+			.shadow(color: Color.black.opacity(0.2), radius: 30, x: 0, y: 20)
 		}
-		.shadow(color: Color.black.opacity(0.5), radius: 26, x: 0, y: 20)
-		.tabViewStyle(.page(indexDisplayMode: .always))
-		.frame(height: 220)
 	}
 
-	private var contentView: some View {
-		ZStack {
-			AppColors.darkBackground.colorValue
+	private func contentView(banner: BannerView.Data) -> some View {
+		VStack(alignment: .leading, spacing: 2) {
+			Text(banner.title)
+				.font(.Raleway.fixed(.semibold, size: .h6))
+				.foregroundStyle(AppColors.white.colorValue)
+				.lineLimit(1)
 
-			HStack(alignment: .top, spacing: 8) {
-				VStack(alignment: .leading, spacing: 6) {
-					Text("Último desconto")
-						.font(.Raleway.fixed(.semibold, size: .h4))
-						.foregroundStyle(AppColors.white.colorValue)
+			Text(banner.subtitle)
+				.font(.Raleway.fixed(.bold, size: .h6))
+				.foregroundStyle(AppColors.boogerBuster.colorValue)
+				.lineLimit(1)
 
-					Text("até 70%")
-						.font(.Raleway.fixed(.bold, size: .h5))
-						.foregroundStyle(AppColors.boogerBuster.colorValue)
-
-					Text("Compre agora e ganhe frete grátis!")
-						.font(.Raleway.fixed(.medium, size: .t2))
-						.foregroundStyle(AppColors.white.colorValue)
-				}
-				.padding(.top, 4)
-
-				Spacer()
-
-				AsyncImage(
-					url: URL(string: imageURL),
-					content: {
-						$0.resizable()
-							.scaledToFit()
-					},
-					placeholder: {
-						ProgressView()
-							.tint(AppColors.boogerBuster.colorValue)
-					}
-				)
-				.frame(width: 100)
-				.frame(maxHeight: .infinity)
+			if let description = banner.description {
+				Text(description)
+					.font(.Raleway.fixed(.medium, size: .t2))
+					.lineSpacing(2)
+					.foregroundStyle(AppColors.white.colorValue)
+					.lineLimit(2)
+					.padding(.top, 8)
 			}
-			.padding(.leading, 40)
-			.padding(.top, 40)
 		}
-		.clipShape(.rect(cornerRadius: 60))
-		.padding(.horizontal)
+		.frame(maxWidth: .infinity, alignment: .leading)
+		.padding(28)
+		.background(AppColors.darkBackground.colorValue)
+		.clipShape(.rect(cornerRadius: 48))
+		.padding(.horizontal, 12)
 	}
 }
 
-#Preview("Light") {
+extension BannerView {
+	public struct Data {
+		let id: Int
+		let title, subtitle: String
+		let description: String?
+
+		public init(id: Int, title: String, subtitle: String, description: String?) {
+			self.id = id
+			self.title = title
+			self.subtitle = subtitle
+			self.description = description
+		}
+	}
+}
+#if DEBUG
+extension [BannerView.Data] {
+	static let oneBanner: Self = [
+		.init(
+			id: .zero,
+			title: "Último desconto",
+			subtitle: "Até 70%",
+			description: "Compre agora e ganhe frete grátis! Compre agora e ganhe frete grátis!"
+		)
+	]
+
+	static let multipleBanners: Self = [
+		.init(
+			id: .zero,
+			title: "Último desconto",
+			subtitle: "Até 70%",
+			description: "Compre agora e ganhe frete grátis!"
+		),
+		.init(
+			id: 1,
+			title: "Último desconto",
+			subtitle: "Até 70%",
+			description: "Compre agora e ganhe frete grátis! Não Perca essa oportunidade"
+		),
+		.init(
+			id: 2,
+			title: "Último desconto",
+			subtitle: "Até 70%",
+			description: nil
+		)
+	]
+}
+
+#Preview("Light One Banner") {
 	ZStack {
 		AppColors.antiflashWhite.colorValue.ignoresSafeArea()
 
-		BannerView(imageURL: "https://i.ibb.co/bXxtkfy/Subject-2.png")
+		BannerView(banners: .oneBanner)
 	}
 }
 
-#Preview("Dark") {
+#Preview("Light Multiple Banners") {
+	ZStack {
+		AppColors.antiflashWhite.colorValue.ignoresSafeArea()
+
+		BannerView(banners: .multipleBanners)
+	}
+}
+
+#Preview("Dark One Banner") {
 	ZStack {
 		AppColors.darkBackground.colorValue.ignoresSafeArea()
 
-		BannerView(imageURL: "https://i.ibb.co/bXxtkfy/Subject-2.png")
+		BannerView(banners: .oneBanner)
 	}
 	.preferredColorScheme(.dark)
 }
+
+#Preview("Dark Multiple Banners") {
+	ZStack {
+		AppColors.darkBackground.colorValue.ignoresSafeArea()
+
+		BannerView(banners: .multipleBanners)
+	}
+	.preferredColorScheme(.dark)
+}
+#endif
