@@ -1,8 +1,10 @@
 import Components
 import ComposableArchitecture
+import Dependencies
 import Resources
 import SwiftUI
 import Theme
+import Tools
 
 public struct FeedView: View {
 	@Bindable var store: StoreOf<FeedReducer>
@@ -13,33 +15,34 @@ public struct FeedView: View {
 
 	public var body: some View {
 		NavigationStack {
-			ZStack(alignment: .top) {
+			ZStack {
 				AppColors.antiflashWhite.colorValue
 					.ignoresSafeArea()
 
-				ScrollView() {
-					VStack(spacing: 16) {
-						headerView
-							.padding([.top, .horizontal])
+				switch store.viewStatus {
+				case .loading:
+					AnimationView(.loading)
+						.frame(width: 100, height: 100)
 
-						bannersView
+				case .ready:
+					ScrollView() {
+						VStack(spacing: 16) {
+							headerView
+								.padding(.horizontal)
 
-						categoriesView
-							.padding(.horizontal)
+							bannersView
+
+							categoriesView
+								.padding([.top, .horizontal])
+						}
+						.padding(.vertical)
 					}
-					.frame(maxWidth: .infinity, alignment: .leading)
-					.padding(.bottom)
 				}
 			}
 			.onAppear { store.send(.viewAppeared) }
-			.navigationTitle("Olá, Paloma!")
-			.toolbarBackground(.clear, for: .navigationBar)
 			.navigationDestination(
 				item: $store.scope(state: \.productDetail, action: \.productDetail),
-				destination: {
-					ProductDetailView(store: $0)
-						.toolbar(.hidden, for: .tabBar)
-				}
+				destination: ProductDetailView.init
 			)
 		}
 	}
@@ -57,11 +60,11 @@ public struct FeedView: View {
 			Image(.shoppingBag)
 				.resizable()
 				.aspectRatio(contentMode: .fit)
-				.colorMultiply(.white)
-				.padding()
-				.frame(width: 68, height: 60)
+				.foregroundStyle(AppColors.charlestonGreen.colorValue)
+				.padding(12)
+				.frame(width: 68, height: 52)
 				.background(.ultraThickMaterial)
-				.clipShape(.rect(cornerRadius: 26))
+				.clipShape(.rect(cornerRadius: 20))
 		}
 	}
 
@@ -85,7 +88,6 @@ public struct FeedView: View {
 		if let banners = store.feed?.banners, !banners.isEmpty {
 			BannerView(banners: banners.bannersAdapted)
 				.frame(height: 160)
-				.padding(.top)
 		}
 	}
 
@@ -102,7 +104,6 @@ public struct FeedView: View {
 					.frame(height: 290)
 			}
 		}
-		.padding(.top)
 	}
 }
 

@@ -42,11 +42,10 @@ extension Network {
 
 extension Network.Endpoint {
 	func buildURL() throws -> URL {
-		// TODO: Move base URL to build configuration
-		guard var url = URL(string: "https://cf46a0fb-3cf3-4c0b-ae57-80869caa128e.mock.pstmn.io") else {
+		guard let baseURL = BuildConfiguration.baseURL.value, var url = URL(string: baseURL) else {
 			throw NetworkError.badConfiguration
 		}
-		
+
 		url.append(path: self.path)
 
 		return url

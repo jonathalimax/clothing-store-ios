@@ -3,6 +3,8 @@ import ComposableArchitecture
 
 @Reducer
 public struct ProductDetailReducer {
+	@Dependency(\.tabBar) var tabBar
+	
 	@ObservableState
 	public struct State: Equatable {
 		var galleryPresented: Bool = false
@@ -19,11 +21,11 @@ public struct ProductDetailReducer {
 	}
 
 	public enum Action: Equatable, BindableAction {
+		case viewAppeared
 		case imageTapped
 		case buyButtonTapped
 		case cartButtonTapped
 		case galleryCloseTapped
-		case detailsDraggedUp
 		case seeMoreTapped
 		case binding(BindingAction<State>)
 	}
@@ -33,6 +35,10 @@ public struct ProductDetailReducer {
 
 		Reduce { state, action in
 			switch action {
+			case .viewAppeared:
+				tabBar.visibility.send(false)
+				return .none
+
 			case .imageTapped:
 				state.galleryPresented = true
 				return .none
@@ -41,7 +47,7 @@ public struct ProductDetailReducer {
 				state.detailsPresented = false
 				return .none
 
-			case .detailsDraggedUp, .seeMoreTapped:
+			case .seeMoreTapped:
 				state.detailsPresented = true
 				return .none
 

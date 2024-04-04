@@ -3,11 +3,13 @@ import ComposableArchitecture
 
 @Reducer
 public struct FeedReducer {
+	@Dependency(\.tabBar) var tabBar
 	@Dependency(\.feedService) var feedService
 
 	@ObservableState
 	public struct State: Equatable {
 		@Presents var productDetail: ProductDetailReducer.State?
+		var viewStatus: ViewStatus = .loading
 		var theme: Theme
 		var feed: Feed?
 
@@ -22,12 +24,16 @@ public struct FeedReducer {
 		case productTapped
 
 		case feedFetched(Feed)
-
 		case productDetail(PresentationAction<ProductDetailReducer.Action>)
 	}
 
 	public enum Cancellables {
 		case fetchFeed
+	}
+
+	enum ViewStatus: Equatable {
+		case loading
+		case ready
 	}
 
 	public init() {}
@@ -36,6 +42,8 @@ public struct FeedReducer {
 		Reduce { state, action in
 			switch action {
 			case .viewAppeared:
+				state.viewStatus = .loading
+				tabBar.visibility.send(true)
 				return fetchFeed()
 
 			case .productTapped:
@@ -43,6 +51,7 @@ public struct FeedReducer {
 				return .none
 
 			case .feedFetched(let feed):
+				state.viewStatus = .ready
 				state.feed = feed
 				return .none
 
@@ -53,7 +62,6 @@ public struct FeedReducer {
 		.ifLet(\.$productDetail, action: \.productDetail) {
 			ProductDetailReducer()
 		}
-		._printChanges()
 	}
 }
 

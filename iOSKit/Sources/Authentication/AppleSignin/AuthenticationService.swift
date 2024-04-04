@@ -2,7 +2,13 @@ import AuthenticationServices
 import Dependencies
 import Services
 
-public final class AuthService: NSObject {
+public protocol AuthServiceProtocol {
+	func authenticateUser() async -> Bool
+	func isCredentialsValid() async throws -> Bool
+	func logout()
+}
+
+public final class AuthService: NSObject, AuthServiceProtocol {
 	@Keychain(.userID) private var userID
 	private let appleIDProvider: ASAuthorizationAppleIDProvider
 	private var authenticationCompletion: ((_ succeed: Bool) -> Void)?
@@ -93,13 +99,13 @@ extension AuthService: ASAuthorizationControllerDelegate {
 
 // MARK: - Dependency Registration
 extension AuthService: DependencyKey {
-	public static let liveValue: AuthService = .init()
-	public static let testValue: AuthService = .init(appleIDProvider: AppleIDProviderMock())
-	public static let previewValue: AuthService = .init(appleIDProvider: AppleIDProviderMock())
+	public static let liveValue: AuthServiceProtocol = AuthService()
+	public static let testValue: AuthServiceProtocol = AuthServiceMock()
+	public static let previewValue: AuthServiceProtocol = AuthServiceMock()
 }
 
 extension DependencyValues {
-	public var authService: AuthService {
+	public var authService: AuthServiceProtocol {
 		get { self[AuthService.self] }
 		set { self[AuthService.self] = newValue }
 	}

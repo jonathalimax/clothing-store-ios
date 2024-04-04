@@ -11,7 +11,6 @@ public struct MainReducer {
 	@ObservableState
 	public struct State: Equatable {
 		@Presents var loginState: LoginReducer.State?
-		var viewStatus: ViewStatus = .loading
 		var feedState: FeedReducer.State
 		var profileState: ProfileReducer.State
 
@@ -34,11 +33,6 @@ public struct MainReducer {
 		case profileAction(ProfileReducer.Action)
 	}
 
-	enum ViewStatus: Equatable {
-		case loading
-		case ready
-	}
-
 	public init() {}
 
 	public var body: some ReducerOf<Self> {
@@ -55,7 +49,6 @@ public struct MainReducer {
 				return validateCredentials()
 
 			case .credentialsVerified(isValid: true):
-				state.viewStatus = .ready
 				return .none
 
 			case .credentialsVerified(isValid: false):
@@ -64,7 +57,6 @@ public struct MainReducer {
 
 			case .loginAction(.presented(.delegate(.authenticated))):
 				state.loginState = nil
-				state.viewStatus = .ready
 				return .none
 
 			case .profileAction(.delegate(.logout)):

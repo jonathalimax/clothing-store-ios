@@ -35,6 +35,10 @@ let package = Package(
 			name: "Tools",
 			targets: ["Tools"]
 		),
+		.library(
+			name: "UI",
+			targets: ["UI"]
+		),
 	],
 	dependencies: [
 		.package(path: "../Themes"),
@@ -69,6 +73,7 @@ let package = Package(
 				.byName(name: "Authentication"),
 				.byName(name: "Feed"),
 				.byName(name: "Profile"),
+				.byName(name: "UI"),
 				.product(name: "Components", package: "Themes"),
 				.product(name: "Resources", package: "Themes"),
 				.product(name: "Theme", package: "Themes"),
@@ -99,6 +104,13 @@ let package = Package(
 		.target(
 			name: "Tools",
 			dependencies: [
+				.product(name: "Resources", package: "Themes"),
+			]
+		),
+		.target(
+			name: "UI",
+			dependencies: [
+				.byName(name: "Tools"),
 				.product(name: "Resources", package: "Themes"),
 			]
 		),

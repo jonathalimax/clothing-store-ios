@@ -29,7 +29,7 @@ let package = Package(
 		),
 	],
 	dependencies: [
-		.package(url: "https://github.com/airbnb/lottie-ios", from: "4.4.1")
+		.package(url: "https://github.com/airbnb/lottie-ios", from: "4.4.1"),
 	],
 	targets: [
 		.target(
@@ -44,7 +44,7 @@ let package = Package(
 			name: "Components",
 			dependencies: [
 				"Resources",
-				.product(name: "Lottie", package: "lottie-ios")
+				.product(name: "Lottie", package: "lottie-ios"),
 			]
 		),
 		.target(

@@ -6,8 +6,8 @@ import Tools
 
 struct ProductDetailView: View {
 	@Bindable private var store: StoreOf<ProductDetailReducer>
-
 	@Dependency(\.uuid) private var uuid
+	@State private var isTabBarVisible: Bool = true
 
 	init(store: StoreOf<ProductDetailReducer>) {
 		self.store = store
@@ -27,18 +27,12 @@ struct ProductDetailView: View {
 					detailView
 						.padding(.top, -26)
 						.shadow(color: Color.black.opacity(0.2), radius: 30, x: 0, y: 10)
-						.gesture(
-							DragGesture().onChanged { value in
-								if value.translation.height < .threshold {
-									store.send(.detailsDraggedUp)
-								}
-							}
-						)
 				}
 				.ignoresSafeArea()
 			}
 		}
 		.simpleBackButton()
+		.onAppear { store.send(.viewAppeared) }
 		.sheet(isPresented: $store.detailsPresented) {
 			detailView // TODO: Use another view instead
 				.ignoresSafeArea()

@@ -4,8 +4,10 @@ import ComposableArchitecture
 import Feed
 import Profile
 import Resources
-import Theme
 import SwiftUI
+import Theme
+import Tools
+import UI
 
 public struct MainView: View {
 	@Bindable private var store: StoreOf<MainReducer>
@@ -15,15 +17,28 @@ public struct MainView: View {
 	}
 
 	public var body: some View {
-		Group {
-			switch store.viewStatus {
-			case .loading:
-				loadingView
-
-			case .ready:
-				mainContent
-			}
-		}
+		FloatTabView(
+			tabs: [
+				.init(
+					id: 0,
+					icon: "newspaper",
+					selectedIcon: "newspaper.fill",
+					screen: FeedView(store: store.scope(state: \.feedState, action: \.feedAction))
+				),
+				.init(
+					id: 1,
+					icon: "cart",
+					selectedIcon: "cart.fill",
+					screen: Color.black
+				),
+				.init(
+					id: 2,
+					icon: "person",
+					selectedIcon: "person.fill",
+					screen: ProfileView(store: store.scope(state: \.profileState, action: \.profileAction))
+				)
+			]
+		)
 		.onAppear {
 			store.send(.didAppear)
 		}
@@ -41,24 +56,6 @@ public struct MainView: View {
 				.frame(width: 100, height: 100)
 		}
 		.ignoresSafeArea()
-	}
-
-	private var mainContent: some View {
-		TabView {
-			Group {
-				FeedView(store: store.scope(state: \.feedState, action: \.feedAction))
-					.tabItem {
-						Image(.trending)
-					}
-
-				ProfileView(store: store.scope(state: \.profileState, action: \.profileAction))
-					.tabItem {
-						Image(systemName: "person.crop.circle.fill")
-					}
-			}
-			.toolbarBackground(.visible, for: .tabBar)
-			.toolbarBackground(.clear, for: .tabBar)
-		}
 	}
 }
 

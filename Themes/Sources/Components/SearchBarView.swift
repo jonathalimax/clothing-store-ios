@@ -25,9 +25,9 @@ public struct SearchBarView: View {
 			}
 			.padding(.horizontal, 20)
 		}
-		.frame(height: 60)
+		.frame(height: 52)
 		.background(.ultraThickMaterial)
-		.clipShape(.rect(cornerRadius: 26))
+		.clipShape(.rect(cornerRadius: 20))
 		.shadow(color: Color.black.opacity(0.05), radius: 20, x: 0, y: 10)
 		.onTapGesture { onTap() }
 	}
